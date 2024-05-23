@@ -32,7 +32,7 @@ userSchema.pre('save', async function(next) {
         }
         const latestid = await this.constructor.findOne({}, {}, { sort: { id: -1 } }); // Find the document with the highest ratingId
         if (latestid) {
-            this.id = latestRating.id + 1; // Increment the ratingId
+            this.id = latestid.id + 1; // Increment the ratingId
         } else {
             this.id = 1; 
         }
